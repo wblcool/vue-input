@@ -25,6 +25,10 @@ Vue.component("input-number", {
         value: {
             type: Number,
             default: 0
+        },
+        step: {
+            type: Number,
+            default: 1
         }
     },
     data: function(){
@@ -51,11 +55,11 @@ Vue.component("input-number", {
         },
         handleDown: function(){//减少
             if(this.currentValue <= this.min) return;
-            this.currentValue -= 1;
+            this.currentValue = this.currentValue - this.step;
         },
         handleUp: function(){//增加
             if(this.currentValue >= this.max) return;
-            this.currentValue += 1;
+            this.currentValue = this.currentValue + this.step;
         },
         handleChange: function(event){//change事件，也可以改成input，此时不在有效范围内的值都不可输入
 
